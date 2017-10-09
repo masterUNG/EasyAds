@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</LinearLayout>
+    <!--Content-->
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_margin="@dimen/margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--Logo-->
+        <ImageView
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/logo"
+            android:layout_width="@dimen/logo"
+            android:layout_height="@dimen/logo" />
+
+        <!--App Name-->
+
+        <!--User-->
+
+        <!--Password-->
+
+        <!--Button-->
+
+        <!--New Register-->
+
+
+    </LinearLayout>
+
+</RelativeLayout>
