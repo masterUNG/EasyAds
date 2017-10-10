@@ -4,4 +4,5 @@
     <dimen name="logo">100dp</dimen>
     <dimen name="h1">24sp</dimen>
     <dimen name="h2">18sp</dimen>
+    <dimen name="logo2">180dp</dimen>
 </resources>
