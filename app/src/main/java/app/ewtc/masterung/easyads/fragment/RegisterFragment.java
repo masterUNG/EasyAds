@@ -12,6 +12,7 @@ import android.widget.ImageView;
 
 import app.ewtc.masterung.easyads.MainActivity;
 import app.ewtc.masterung.easyads.R;
+import app.ewtc.masterung.easyads.utility.MyAlert;
 
 /**
  * Created by masterung on 10/10/2017 AD.
@@ -70,6 +71,18 @@ public class RegisterFragment extends Fragment{
                 EditText userEditText = getView().findViewById(R.id.edtUser);
                 EditText passwordEditText = getView().findViewById(R.id.edtPassword);
 
+//                Change Data Type
+                nameString = nameEditText.getText().toString().trim();
+                userString = userEditText.getText().toString().trim();
+                passwordString = passwordEditText.getText().toString().trim();
+
+//                Check Space
+                if (nameString.equals("") || userString.equals("") || passwordString.equals("")) {
+                    //Have Space
+                    MyAlert myAlert = new MyAlert(getActivity());
+                    myAlert.myDialog("Have Space", "Please Fill All Every Blank");
+
+                }
 
 
 
