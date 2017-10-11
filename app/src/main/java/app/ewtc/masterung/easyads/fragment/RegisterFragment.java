@@ -7,6 +7,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageView;
 
 import app.ewtc.masterung.easyads.MainActivity;
 import app.ewtc.masterung.easyads.R;
@@ -16,6 +18,10 @@ import app.ewtc.masterung.easyads.R;
  */
 
 public class RegisterFragment extends Fragment{
+
+//    Explicit
+    private String nameString, userString, passwordString;
+
 
     @Nullable
     @Override
@@ -51,6 +57,23 @@ public class RegisterFragment extends Fragment{
             public void onClick(View v) {
                 getActivity().getSupportFragmentManager().popBackStack();
             }
+        });
+
+        //Save Controller
+        ImageView imageView = getView().findViewById(R.id.imvSave);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+//                Get Value From EditText
+                EditText nameEditText = getView().findViewById(R.id.edtName);
+                EditText userEditText = getView().findViewById(R.id.edtUser);
+                EditText passwordEditText = getView().findViewById(R.id.edtPassword);
+
+
+
+
+            }   // onClick
         });
 
     }
