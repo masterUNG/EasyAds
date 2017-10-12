@@ -201,6 +201,8 @@ public class RegisterFragment extends Fragment{
             simpleFTP.stor(new File(strPathImage));
             simpleFTP.disconnect();
 
+//            Update Value on mySQL
+
 
 
         } catch (Exception e) {
