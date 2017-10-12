@@ -3,6 +3,7 @@
     package="app.ewtc.masterung.easyads">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
 
     <application

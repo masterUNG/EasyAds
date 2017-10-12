@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -17,9 +18,14 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import org.jibble.simpleftp.SimpleFTP;
+
+import java.io.File;
+
 import app.ewtc.masterung.easyads.MainActivity;
 import app.ewtc.masterung.easyads.R;
 import app.ewtc.masterung.easyads.utility.MyAlert;
+import app.ewtc.masterung.easyads.utility.MyConstant;
 
 /**
  * Created by masterung on 10/10/2017 AD.
@@ -173,6 +179,33 @@ public class RegisterFragment extends Fragment{
             strPathImage = uri.getPath();
         }
         Log.d(tag, "Path of Image ==> " + strPathImage);
+
+//        Upload File to Server
+        try {
+
+//            Connected Protocol FTP
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy
+                    .Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+
+            SimpleFTP simpleFTP = new SimpleFTP();
+            MyConstant myConstant = new MyConstant();
+            simpleFTP.connect(
+                    myConstant.getHostString(),
+                    myConstant.getPortAnInt(),
+                    myConstant.getUserString(),
+                    myConstant.getPasswordString()
+            );
+            simpleFTP.bin();
+            simpleFTP.cwd("ImageMaster");
+            simpleFTP.stor(new File(strPathImage));
+            simpleFTP.disconnect();
+
+
+
+        } catch (Exception e) {
+            Log.d(tag, "e upload ==> " + e.toString());
+        }
 
 
 
