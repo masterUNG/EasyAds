@@ -6,6 +6,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import app.ewtc.masterung.easyads.R;
@@ -15,6 +17,10 @@ import app.ewtc.masterung.easyads.R;
  */
 
 public class MainFragment extends Fragment{
+
+    String userString;
+    private String passwordString;
+
 
     @Nullable
     @Override
@@ -30,6 +36,25 @@ public class MainFragment extends Fragment{
 //        Register Controller
         registerController();
 
+//        SignIn Controller
+        signInController();
+
+    }
+
+    private void signInController() {
+        Button button = getView().findViewById(R.id.btnSignIn);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                EditText userEditText = getView().findViewById(R.id.edtUser);
+                EditText passwordEditText = getView().findViewById(R.id.edtPassword);
+
+                userString = userEditText.getText().toString().trim();
+                passwordString = passwordEditText.getText().toString().trim();
+
+            }
+        });
     }
 
     private void registerController() {
