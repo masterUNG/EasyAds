@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import org.jibble.simpleftp.SimpleFTP;
 
@@ -26,6 +27,7 @@ import app.ewtc.masterung.easyads.MainActivity;
 import app.ewtc.masterung.easyads.R;
 import app.ewtc.masterung.easyads.utility.MyAlert;
 import app.ewtc.masterung.easyads.utility.MyConstant;
+import app.ewtc.masterung.easyads.utility.UploadValueToServer;
 
 /**
  * Created by masterung on 10/10/2017 AD.
@@ -202,6 +204,20 @@ public class RegisterFragment extends Fragment{
             simpleFTP.disconnect();
 
 //            Update Value on mySQL
+            Log.d(tag, "Name ==> " + nameString);
+            Log.d(tag, "User ==> " + userString);
+            Log.d(tag, "Password ==> " + passwordString);
+            Log.d(tag, "Image ==> " + findNameImage(strPathImage));
+
+            UploadValueToServer uploadValueToServer = new UploadValueToServer(getActivity());
+            uploadValueToServer.execute(nameString, userString, passwordString,
+                    findNameImage(strPathImage), myConstant.getUrlPostUser());
+
+            if (Boolean.parseBoolean(uploadValueToServer.get())) {
+                getActivity().getSupportFragmentManager().popBackStack();
+            } else {
+                Toast.makeText(getActivity(), "Error Cannot Upload", Toast.LENGTH_SHORT).show();
+            }
 
 
 
@@ -212,6 +228,17 @@ public class RegisterFragment extends Fragment{
 
 
     }   // upload
+
+    private String findNameImage(String strPathImage) {
+
+        String result = null;
+
+        result = strPathImage.substring(strPathImage.lastIndexOf("/"));
+        result = "http://swiftcodingthai.com/ino/ImageMaster" + result;
+
+
+        return result;
+    }
 
 
 }   // Main Class
